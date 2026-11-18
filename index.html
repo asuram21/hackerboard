@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>해커보드 | 이론은 교재로, 실습은 해커보드로</title>
+<meta name="description" content="공격과 방어를 한 보드에서 실습하는 IoT·제어시스템 보안 교육 키트. 소프트웨이브 2026 부스 B03-1에서 직접 체험해 보세요.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="해커보드 | 이론은 교재로, 실습은 해커보드로">
+<meta property="og:description" content="IoT·차량 CAN·산업제어 보안 실습을 키트 하나로. 소프트웨이브 2026 부스 B03-1 체험 · CAN 교안 샘플 신청">
+<meta property="og:image" content="https://storage.googleapis.com/withsecu-mail/hackerboard-leaflet-cover.jpg">
+<meta property="og:locale" content="ko_KR">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--navy:#12203a;--yellow:#ffd600;--bg:#eef1f6;--ink:#1d2433;--sub:#5b6577;--line:#dfe4ec;--card:#f6f8fb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.7;word-break:keep-all;-webkit-text-size-adjust:100%}
+a{color:inherit}
+.wrap{max-width:860px;margin:0 auto;background:#fff}
+@media(min-width:900px){.wrap{margin:24px auto;border-radius:6px;overflow:hidden;box-shadow:0 2px 16px rgba(18,32,58,.08)}}
+header{background:var(--navy);color:#fff;padding:28px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+header .lbl{font-size:12px;letter-spacing:3px;color:var(--yellow);font-weight:700}
+header h1{margin:6px 0 4px;font-size:clamp(22px,5.4vw,30px);line-height:1.35}
+header p{margin:0;font-size:14px;color:#c9d2e3}
+header .logo{background:#fff;border-radius:6px;padding:8px 10px;flex:none}
+header .logo img{display:block;height:34px;width:auto}
+section{padding:24px 20px}
+@media(min-width:600px){header,section{padding-left:40px;padding-right:40px}}
+.intro p{margin:0 0 12px;font-size:15.5px}
+.cta-top{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;font-size:15px;padding:13px 20px;border-radius:6px;text-align:center;border:0;cursor:pointer;font-family:inherit}
+.btn-y{background:var(--yellow);color:var(--navy)}
+.btn-n{background:var(--navy);color:#fff}
+.btn-o{background:#fff;color:var(--navy);border:1.5px solid var(--navy)}
+.cards{display:grid;gap:12px}
+@media(min-width:640px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--yellow);border-radius:6px;padding:16px}
+.card h3{margin:0 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:0;font-size:14px;color:var(--sub)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--navy);color:#fff;text-align:center}
+.stats div{padding:18px 6px}
+.stats b{display:block;font-size:26px;color:var(--yellow);line-height:1.2}
+.stats span{font-size:13px;color:#c9d2e3}
+h2{font-size:19px;margin:0 0 14px;color:var(--navy)}
+.book{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.book:last-child{border-bottom:0}
+.book b{font-size:15.5px}
+.book small{display:block;color:var(--sub);font-size:13.5px}
+.book a{flex:none;font-size:13px;font-weight:700;color:var(--navy);text-decoration:none;border:1px solid var(--navy);border-radius:4px;padding:6px 10px}
+.leaf{display:flex;gap:18px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px}
+.leaf img{width:120px;height:auto;border:1px solid var(--line);flex:none}
+.leaf p{margin:0 0 10px;font-size:14.5px;color:var(--sub)}
+@media(max-width:480px){.leaf{flex-direction:column;align-items:flex-start}.leaf img{width:100%;max-width:260px}}
+.expo{background:#fffbe0;border:2px solid var(--yellow);border-radius:8px;padding:20px}
+.expo h2{margin-bottom:4px}
+.expo .sub{margin:0 0 14px;color:var(--sub);font-size:14.5px}
+.expo dl{display:grid;grid-template-columns:52px 1fr;gap:6px 10px;margin:0 0 14px;font-size:15px}
+.expo dt{font-weight:700;color:var(--navy)}
+.expo dd{margin:0}
+.expo img{width:100%;height:auto;border-radius:4px;border:1px solid var(--line);margin-top:14px;display:block}
+.req{background:var(--navy);color:#fff;border-radius:8px;padding:22px 20px}
+.req h2{color:var(--yellow)}
+.req p{margin:0 0 12px;font-size:15px;color:#e3e8f2}
+.req ul{margin:0 0 16px;padding-left:20px;font-size:14.5px;color:#e3e8f2}
+.req .alt{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.18);font-size:14px;color:#c9d2e3}
+.req .addr{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:8px}
+.req code{font-family:inherit;font-size:16px;font-weight:700;color:#fff;background:rgba(255,255,255,.1);padding:6px 10px;border-radius:4px}
+.copy{font-size:13px;padding:7px 12px}
+.note{font-size:12.5px;color:#9aa6bd;margin-top:12px}
+.sign{font-size:14.5px}
+.sign b{font-size:16px}
+footer{background:#f3f5f9;color:var(--sub);font-size:12.5px;padding:16px 20px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div>
+    <div class="lbl">HACKERBOARD</div>
+    <h1>이론은 교재로,<br>실습은 해커보드로.</h1>
+    <p>공격과 방어를 한 보드에서 실습하는 IoT·제어시스템 보안 교육 키트</p>
+  </div>
+  <div class="logo"><img src="https://storage.googleapis.com/withsecu-mail/Logo-01.png" alt="위드시큐 로고"></div>
+</header>
+
+<section class="intro">
+  <p>안녕하세요. 건양대학교 스마트보안학과 교수 김동원입니다. 교원창업 기업 위드시큐에서 보안 실습 장비 <b>해커보드</b>를 만들고 있습니다.</p>
+  <p>IoT·하드웨어 보안 실습을 준비할 때마다 장비를 따로 구하고 배선을 잡는 데 시간이 많이 들었습니다. 그래서 제 수업에 쓰려고 만든 장비가 해커보드이고, 2023년부터 정규 교과에서 다듬어 왔습니다.</p>
+  <div class="cta-top">
+    <a class="btn btn-y" href="#request">CAN 교안 샘플 받기</a>
+    <a class="btn btn-o expo-only" href="#expo">전시회 체험 안내</a>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="cards">
+    <div class="card"><h3>공격·방어 동시 실습</h3><p>한 보드에 MCU 두 개(ATTACKER/DEFENDER)가 있어 별도 타깃 장비가 필요 없습니다.</p></div>
+    <div class="card"><h3>자석 탈부착 모듈 19종</h3><p>배선과 납땜 없이 붙였다 떼며 실습합니다.</p></div>
+    <div class="card"><h3>교안 일체 제공</h3><p>강사용 PPT, 학생 워크북, 예제 코드가 함께 갑니다. IR·RF·RFID·BLE부터 공유기, 차량 CAN, 산업제어 Modbus까지 다루고, 의료·국방 분야는 확장 모듈로 준비하고 있습니다.</p></div>
+  </div>
+</section>
+
+<div class="stats">
+  <div><b>KC</b><span>인증 완료</span></div>
+  <div><b>5건</b><span>등록특허</span></div>
+  <div><b>9건</b><span>출원특허</span></div>
+</div>
+
+<section>
+  <h2>연계 교재 3종</h2>
+  <div class="book"><div><b>사물인터넷(IoT) 보안 실무</b><small>해커보드로 이해하는 IoT 보안 · 김동원 · 280쪽 · 14주차 구성이라 한 학기 강의계획서에 그대로 맞출 수 있습니다.</small></div><a href="https://product.kyobobook.co.kr/detail/S000213079988" target="_blank" rel="noopener">교보문고</a></div>
+  <div class="book"><div><b>제어시스템 보안 시리즈 1권</b><small>IEC 62443 이론과 전략 · 한근희·김동원 · 326쪽 · OT 위협 사례와 국제 표준의 구조를 다룹니다.</small></div><a href="https://product.kyobobook.co.kr/detail/S000219391437" target="_blank" rel="noopener">교보문고</a></div>
+  <div class="book"><div><b>제어시스템 보안 시리즈 2권</b><small>IEC 62443 공격과 실습 · 김동원·한근희 · 250쪽 · 해커보드 실습 6종을 IEC 62443 기본 요구사항(FR 1~7) 위반 사례로 풀어냅니다.</small></div><a href="https://product.kyobobook.co.kr/detail/S000220694590" target="_blank" rel="noopener">교보문고</a></div>
+</section>
+
+<section style="padding-top:0">
+  <div class="leaf">
+    <a href="https://storage.googleapis.com/withsecu-mail/hackerboard-leaflet.pdf" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/withsecu-mail/hackerboard-leaflet-cover.jpg" alt="해커보드 리플릿 표지"></a>
+    <div>
+      <h2 style="margin-bottom:6px">리플릿</h2>
+      <p>모듈 19종 구성과 실습 시나리오를 한 장에 담았습니다. (PDF 2쪽 · 0.8MB)</p>
+      <a class="btn btn-n" href="https://storage.googleapis.com/withsecu-mail/hackerboard-leaflet.pdf" target="_blank" rel="noopener">리플릿 보기</a>
+    </div>
+  </div>
+</section>
+
+<section id="expo" class="expo-only" style="padding-top:0">
+  <div class="expo">
+    <h2>전시회 안내</h2>
+    <p class="sub">AI×소프트웨이브 2026에서 해커보드를 직접 체험해 보세요.</p>
+    <dl>
+      <dt>일정</dt><dd>2026년 12월 2일(수) ~ 4일(금)</dd>
+      <dt>장소</dt><dd>서울 코엑스 A홀</dd>
+      <dt>부스</dt><dd><b>B03-1</b> (수자원공사 공동관)</dd>
+    </dl>
+    <a class="btn btn-n" href="https://k-softwave.com/invite2026/" target="_blank" rel="noopener">무료 사전등록 (공식 초청장)</a>
+    <a href="https://storage.googleapis.com/withsecu-mail/%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%9D%B4%EB%B8%8C2026_%EB%B6%80%EC%8A%A4%EC%9C%84%EC%B9%98_B03-1_%EB%A9%94%EC%9D%BC%EC%9A%A9.jpg" target="_blank" rel="noopener"><img src="https://storage.googleapis.com/withsecu-mail/%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%9D%B4%EB%B8%8C2026_%EB%B6%80%EC%8A%A4%EC%9C%84%EC%B9%98_B03-1_%EB%A9%94%EC%9D%BC%EC%9A%A9.jpg" alt="소프트웨이브 2026 부스 배치도, B03-1 위치 표시"></a>
+  </div>
+</section>
+
+<section id="request" style="padding-top:0">
+  <div class="req">
+    <h2>CAN 교안 샘플 받기</h2>
+    <p>커리큘럼과 차량 CAN 보안 교안 샘플을 메일로 보내드립니다. 아래 버튼을 누르면 요청 메일이 작성됩니다. 다음 내용만 채워 보내 주세요.</p>
+    <ul>
+      <li>성함</li>
+      <li>소속 (대학·기관·기업)</li>
+      <li>직위 (교수, 강사, 교사, 연구원, 담당자 등)</li>
+    </ul>
+    <a class="btn btn-y" id="mailBtn" href="#">자료 요청 메일 보내기</a>
+    <div class="alt">
+      버튼을 눌러도 메일 창이 열리지 않으면, 사용하시는 메일에서 아래 주소로 성함·소속·직위를 적어 보내 주세요.
+      <div class="addr"><code id="addr">info@withsecu.kr</code><button class="btn btn-o copy" id="copyBtn" type="button">주소 복사</button></div>
+    </div>
+    <p class="note">보내 주신 정보는 교안 샘플 발송과 문의 응대에만 사용합니다. 샘플에는 받는 분 성함이 표시됩니다.</p>
+  </div>
+</section>
+
+<section class="sign" style="padding-top:0">
+  <b>김동원</b><br>
+  건양대학교 스마트보안학과 부교수 / 위드시큐(withSECU) 대표<br>
+  <a href="https://www.hackerboard.co.kr" target="_blank" rel="noopener">www.hackerboard.co.kr</a> · info@withsecu.kr
+  <div class="cta-top"><a class="btn btn-o" href="https://www.hackerboard.co.kr" target="_blank" rel="noopener">홈페이지 보기</a></div>
+</section>
+
+<footer>위드시큐(withSECU) · (32992) 충남 논산시 대학로 121, 자연학관 420호</footer>
+</div>
+
+<script>
+(function(){
+  // 전시회(12/2~4) 종료 후 2026-12-05 00:00 KST부터 전시회 안내 자동 숨김
+  if (Date.now() >= Date.parse("2026-12-05T00:00:00+09:00")) {
+    var ex = document.querySelectorAll(".expo-only");
+    for (var i = 0; i < ex.length; i++) ex[i].style.display = "none";
+  }
+  var subject = "[SNS] CAN 교안 샘플 요청";
+  var body = "성함:\n소속:\n직위:\n관심 분야(선택): IoT / 차량 CAN / 산업제어\n문의 사항(선택):\n";
+  var href = "mailto:info@withsecu.kr?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  document.getElementById("mailBtn").setAttribute("href", href);
+  var cb = document.getElementById("copyBtn");
+  cb.addEventListener("click", function(){
+    var t = "info@withsecu.kr";
+    function done(){ cb.textContent = "복사됨"; setTimeout(function(){ cb.textContent = "주소 복사"; }, 1800); }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(done, fallback); }
+      else { fallback(); }
+    } catch (e) { fallback(); }
+    function fallback(){
+      try { var ta = document.createElement("textarea"); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta); done(); } catch (e) {}
+    }
+  });
+})();
+</script>
+</body>
+</html>
