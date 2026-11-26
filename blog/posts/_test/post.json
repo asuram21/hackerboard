@@ -5,7 +5,7 @@
     "위드시큐",
     "시험태그"
   ],
-  "visibility": "public",
+  "visibility": "private",
   "thumb": "THUMB",
   "images": [
     {
@@ -16,6 +16,5 @@
       "key": "KIT",
       "file": "../../img/hackerboard_kit.jpg"
     }
-  ],
-  "reserve": "2027-01-14 09:00"
+  ]
 }

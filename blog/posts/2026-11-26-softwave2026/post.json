@@ -1,0 +1,29 @@
+{
+  "title": "[소식] AI×소프트웨이브 2026에서 IoT·OT 보안 실습교육을 함께 이야기합니다 (12/2~4, 코엑스 A홀 B03-1)",
+  "category": "교육·도서 안내",
+  "tags": [
+    "위드시큐",
+    "소프트웨이브2026",
+    "코엑스",
+    "보안교육",
+    "IoT보안",
+    "OT보안",
+    "제어시스템보안",
+    "해커보드",
+    "CAN",
+    "MAVLink"
+  ],
+  "visibility": "public",
+  "thumb": "THUMB",
+  "published": "https://withsecu.tistory.com/32",
+  "images": [
+    {
+      "key": "THUMB",
+      "file": "thumb.jpg"
+    },
+    {
+      "key": "KIT",
+      "file": "../../img/hackerboard_kit.jpg"
+    }
+  ]
+}
