@@ -1,0 +1,11 @@
+{
+  "title": "[시험] 자동 발행 파이프라인 점검",
+  "category": "교육·도서 안내",
+  "tags": ["위드시큐", "시험태그"],
+  "visibility": "private",
+  "thumb": "THUMB",
+  "images": [
+    {"key": "THUMB", "file": "thumb.jpg"},
+    {"key": "KIT", "file": "../../img/hackerboard_kit.jpg"}
+  ]
+}
