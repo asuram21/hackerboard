@@ -113,6 +113,37 @@
     return '대표이미지 설정';
   }
 
+  // 예약 발행: 'YYYY-MM-DD HH:MM' (한국 시간)
+  async function setReserve(when) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})$/.exec(when);
+    if (!m) throw new Error('예약 형식 오류: ' + when);
+    const [, Y, Mo, D, h, mi] = m;
+    const btn = [...document.querySelectorAll('.btn_date')].find(e => e.textContent.trim() === '예약');
+    if (!btn) throw new Error('예약 버튼 없음(공개 설정 확인)');
+    btn.click(); await sleep(400);
+    $('.btn_reserve').click(); await sleep(400);
+    const want = `${+Y}년 ${+Mo}월`;
+    for (let i = 0; i < 24 && $('.box_calendar .txt_calendar').textContent.trim() !== want; i++) {
+      $('.box_calendar .btn_next').click(); await sleep(150);
+    }
+    if ($('.box_calendar .txt_calendar').textContent.trim() !== want) throw new Error('달력 이동 실패: ' + want);
+    const day = [...document.querySelectorAll('.box_calendar .btn_day')].find(b => !b.disabled && b.textContent.trim() === String(+D));
+    if (!day) throw new Error('선택할 수 없는 날짜: ' + when);
+    day.click(); await sleep(300);
+    const set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
+    for (const [id, v] of [['dateHour', h], ['dateMinute', mi]]) {
+      const inp = $('#' + id); set.call(inp, v);
+      inp.dispatchEvent(new Event('input', { bubbles: true }));
+      inp.dispatchEvent(new Event('change', { bubbles: true }));
+      inp.dispatchEvent(new Event('blur', { bubbles: true }));
+    }
+    await sleep(200);
+    const got = `${$('.btn_reserve').textContent.trim()} ${$('#dateHour').value}:${$('#dateMinute').value}`;
+    if (got.replace(/\s+/g, ' ') !== `${Y}-${Mo}-${D} ${h}:${mi}`.replace(/(\s)0?(\d):/, '$1$2:') && !got.startsWith(`${Y}-${Mo}-${D}`))
+      throw new Error('예약 값 불일치: ' + got);
+    return '예약: ' + got + ' / 버튼 ' + $('#publish-btn').textContent.trim();
+  }
+
   async function run(base, opt = {}) {
     log.length = 0;
     if (!/\/manage\/newpost/.test(location.pathname)) throw new Error('글쓰기 화면이 아님');
@@ -160,8 +191,7 @@
     $('#' + vis).click();
     await sleep(200);
     if (post.thumb && blobs[post.thumb]) say(await setThumbnail(blobs[post.thumb]));
-    if (post.reserve) say('예약 발행은 아직 미지원: 즉시 발행 대신 중단');
-    if (post.reserve) return { ok: false, mode, log: [...log] };
+    if (post.reserve) say(await setReserve(post.reserve));
     if (opt.dryRun) { say('dryRun: 발행 직전 중단'); return { ok: true, mode, log: [...log] }; }
     $('#publish-btn').click();
     say('발행 요청');
