@@ -32,7 +32,12 @@
   async function uploadToEditor(blob, name) {
     const before = imageMarks().length;
     window.__tpubCapture = true; window.__tpubCaptured = null;
-    const item = [...document.querySelectorAll('.mce-tistory-attach-item')].find(e => e.textContent.trim() === '사진');
+    const findItem = () => [...document.querySelectorAll('.mce-tistory-attach-item')].find(e => e.textContent.trim() === '사진');
+    if (!findItem()) {  // 첨부 메뉴는 처음 열 때 만들어짐
+      const opener = $('#mceu_0-open') || document.querySelector('.mce-i-image')?.closest('button');
+      if (opener) { opener.click(); await waitFor(findItem, 3000, 100); }
+    }
+    const item = findItem();
     if (!item) throw new Error('사진 첨부 메뉴를 찾지 못함');
     item.click();
     const inp = await waitFor(() => window.__tpubCaptured, 5000, 100);
